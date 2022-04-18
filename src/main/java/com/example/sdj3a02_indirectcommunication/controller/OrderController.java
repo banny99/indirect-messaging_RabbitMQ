@@ -36,10 +36,10 @@ public class OrderController {
         orderService.createOrder(order);
         //publish
         if (orderPublisher.sendOrderMessage(order)){
-            System.out.println("published successfully");
+            System.out.println("order published successfully");
         }
         else {
-            System.out.println("failed to publish");
+            System.out.println("order failed to publish");
         }
     }
 

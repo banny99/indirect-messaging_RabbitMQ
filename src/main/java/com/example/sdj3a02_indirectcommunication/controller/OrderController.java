@@ -6,8 +6,10 @@ import com.example.sdj3a02_indirectcommunication.service.OrderRabbitMQPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
 public class OrderController {
 
     private IOrderService orderService;
@@ -17,6 +19,11 @@ public class OrderController {
     public OrderController(IOrderService orderService, OrderRabbitMQPublisher orderPublisher) {
         this.orderService = orderService;
         this.orderPublisher = orderPublisher;
+    }
+
+    @GetMapping()
+    public List<Order> getAllOrders(){
+        return orderService.getAllOrders();
     }
 
     @GetMapping("/{id}")
